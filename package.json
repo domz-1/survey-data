@@ -11,7 +11,7 @@
     "react-scripts": "latest"
   },
   "scripts": {
-    "start": "react-scripts start"
+    "run start": "react-scripts start"
   },
   "browserslist": {
     "production": [
