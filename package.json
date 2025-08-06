@@ -1,0 +1,28 @@
+{
+  "type": "module",
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "survey-core": "latest",
+    "survey-react-ui": "latest"
+  },
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

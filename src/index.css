@@ -1,0 +1,589 @@
+@import"https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap";
+:root {
+    --sdga-alpha-10: hsl(0, 0%, 10%);
+    --sdga-alpha-20: hsl(0, 0%, 20%);
+    --sdga-alpha-30: hsl(0, 0%, 30%);
+    --sdga-alpha-40: hsl(0, 0%, 40%);
+    --sdga-alpha-50: hsl(0, 0%, 50%);
+    --sdga-alpha-60: hsl(0, 0%, 60%);
+    --sdga-alpha-70: hsl(0, 0%, 70%);
+    --sdga-alpha-80: hsl(0, 0%, 80%);
+    --sdga-alpha-90: hsl(0, 0%, 90%);
+    --sdga-alpha-100: hsl(0, 0%, 100%);
+    --sdga-white-10: hsla(0, 0%, 100%, .1);
+    --sdga-white-20: hsla(0, 0%, 100%, .2);
+    --sdga-white-30: hsla(0, 0%, 100%, .3);
+    --sdga-white-40: hsla(0, 0%, 100%, .4);
+    --sdga-white-50: hsla(0, 0%, 100%, .5);
+    --sdga-white-60: hsla(0, 0%, 100%, .6);
+    --sdga-white-70: hsla(0, 0%, 100%, .7);
+    --sdga-white-80: hsla(0, 0%, 100%, .8);
+    --sdga-white-90: hsla(0, 0%, 100%, .9);
+    --sdga-white-100: hsl(0, 0%, 100%);
+    --sdga-gray-25: #fcfcfd;
+    --sdga-gray-50: #f9fafb;
+    --sdga-gray-100: #f3f4f6;
+    --sdga-gray-200: #e5e7eb;
+    --sdga-gray-300: #d2d6db;
+    --sdga-gray-400: #9da4ae;
+    --sdga-gray-500: #6c737f;
+    --sdga-gray-600: #4d5761;
+    --sdga-gray-700: #384250;
+    --sdga-gray-800: #1f2a37;
+    --sdga-gray-900: #111927;
+    --sdga-gray-950: #0d121c;
+    --sdga-sa-25: #f7fdf9;
+    --sdga-sa-50: #f3fcf6;
+    --sdga-sa-100: #dff6e7;
+    --sdga-sa-200: #b8eacb;
+    --sdga-sa-300: #88d8ad;
+    --sdga-sa-400: #54c08a;
+    --sdga-sa-500: #25935f;
+    --sdga-sa-600: #1b8354;
+    --sdga-sa-700: #166a45;
+    --sdga-sa-800: #14573a;
+    --sdga-sa-900: #104631;
+    --sdga-sa-950: #092a1e;
+    --sdga-gold-25: #fffef7;
+    --sdga-gold-50: #fffef2;
+    --sdga-gold-100: #fffce6;
+    --sdga-gold-200: #fcf3bd;
+    --sdga-gold-300: #fae996;
+    --sdga-gold-400: #f7d54d;
+    --sdga-gold-500: #f5bd02;
+    --sdga-gold-600: #dba102;
+    --sdga-gold-700: #b87b02;
+    --sdga-gold-800: #945c01;
+    --sdga-gold-900: #6e3c00;
+    --sdga-gold-950: #472400;
+    --sdga-lavender-25: #fefcff;
+    --sdga-lavender-50: #f9f5fa;
+    --sdga-lavender-100: #f2e9f5;
+    --sdga-lavender-200: #e1cce8;
+    --sdga-lavender-300: #ccadd9;
+    --sdga-lavender-400: #a57bba;
+    --sdga-lavender-500: #80519f;
+    --sdga-lavender-600: #6d428f;
+    --sdga-lavender-700: #532d75;
+    --sdga-lavender-800: #3d1d5e;
+    --sdga-lavender-900: #281047;
+    --sdga-lavender-950: #16072e;
+    --sdga-error-25: #fffbfa;
+    --sdga-error-50: #fef3f2;
+    --sdga-error-100: #fee4e2;
+    --sdga-error-200: #fecdca;
+    --sdga-error-300: #fda29b;
+    --sdga-error-400: #f97066;
+    --sdga-error-500: #f04438;
+    --sdga-error-600: #d92d20;
+    --sdga-error-700: #b42318;
+    --sdga-error-800: #912018;
+    --sdga-error-900: #7a271a;
+    --sdga-error-950: #55160c;
+    --sdga-warning-25: #fffcf5;
+    --sdga-warning-50: #fffaeb;
+    --sdga-warning-100: #fef0c7;
+    --sdga-warning-200: #fedf89;
+    --sdga-warning-300: #fec84b;
+    --sdga-warning-400: #fdb022;
+    --sdga-warning-500: #f79009;
+    --sdga-warning-600: #dc6803;
+    --sdga-warning-700: #b54708;
+    --sdga-warning-800: #93370d;
+    --sdga-warning-900: #7a2e0e;
+    --sdga-warning-950: #4e1d09;
+    --sdga-info-25: #f5faff;
+    --sdga-info-50: #eff8ff;
+    --sdga-info-100: #d1e9ff;
+    --sdga-info-200: #b2ddff;
+    --sdga-info-300: #84caff;
+    --sdga-info-400: #53b1fd;
+    --sdga-info-500: #2e90fa;
+    --sdga-info-600: #1570ef;
+    --sdga-info-700: #175cd3;
+    --sdga-info-800: #1849a9;
+    --sdga-info-900: #194185;
+    --sdga-info-950: #102a56;
+    --sdga-success-25: #f6fef9;
+    --sdga-success-50: #ecfdf3;
+    --sdga-success-100: #dcfae6;
+    --sdga-success-200: #abefc6;
+    --sdga-success-300: #75e0a7;
+    --sdga-success-400: #47cd89;
+    --sdga-success-500: #17b26a;
+    --sdga-success-600: #079455;
+    --sdga-success-800: #085d3a;
+    --sdga-success-900: #074d31;
+    --sdga-success-950: #053321;
+    --sdga-special-black: #161616;
+    --sdga-special-transparent: transparent;
+    --sdga-gradient-600-500: linear-gradient(90deg, #1b8354, #25935f);
+    --sdga-gradient-700-600: linear-gradient(45deg, #166a45, #1b8354);
+    --sdga-gradient-950-600: linear-gradient(45deg, #092a1e, #1b8354);
+    --sdga-gradient-800-600: linear-gradient(90deg, #14573a, #1b8354);
+    --sdga-gradient-800-700: linear-gradient(26.5deg, #14573a, #166a45);
+    --sdga-gradient-900-600: linear-gradient(45deg, #104631, #1b8354);
+    --sdga-font-weight-regular: 400;
+    --sdga-font-weight-medium: 500;
+    --sdga-font-weight-semibold: 600;
+    --sdga-font-weight-bold: 700;
+    --sdga-typography-d-2xl-regular-font-size: 4.5rem;
+    --sdga-typography-d-2xl-regular-line-height: 5.625rem;
+    --sdga-typography-d-2xl-regular-letter-spacing: -2%;
+    --sdga-typography-d-2xl-medium-font-size: 4.5rem;
+    --sdga-typography-d-2xl-medium-line-height: 5.625rem;
+    --sdga-typography-d-2xl-medium-letter-spacing: -2%;
+    --sdga-typography-d-2xl-semibold-font-size: 4.5rem;
+    --sdga-typography-d-2xl-semibold-line-height: 5.625rem;
+    --sdga-typography-d-2xl-semibold-letter-spacing: -2%;
+    --sdga-typography-d-2xl-bold-font-size: 4.5rem;
+    --sdga-typography-d-2xl-bold-line-height: 5.625rem;
+    --sdga-typography-d-2xl-bold-letter-spacing: -2%;
+    --sdga-typography-d-xl-regular-font-size: 3.75rem;
+    --sdga-typography-d-xl-regular-line-height: 4.5rem;
+    --sdga-typography-d-xl-regular-letter-spacing: -2%;
+    --sdga-typography-d-xl-medium-font-size: 3.75rem;
+    --sdga-typography-d-xl-medium-line-height: 4.5rem;
+    --sdga-typography-d-xl-medium-letter-spacing: -2%;
+    --sdga-typography-d-xl-semibold-font-size: 3.75rem;
+    --sdga-typography-d-xl-semibold-line-height: 4.5rem;
+    --sdga-typography-d-xl-semibold-letter-spacing: -2%;
+    --sdga-typography-d-xl-bold-font-size: 3.75rem;
+    --sdga-typography-d-xl-bold-line-height: 4.5rem;
+    --sdga-typography-d-xl-bold-letter-spacing: -2%;
+    --sdga-typography-d-lg-regular-font-size: 3rem;
+    --sdga-typography-d-lg-regular-line-height: 3.75rem;
+    --sdga-typography-d-lg-regular-letter-spacing: -2%;
+    --sdga-typography-d-lg-medium-font-size: 3rem;
+    --sdga-typography-d-lg-medium-line-height: 3.75rem;
+    --sdga-typography-d-lg-medium-letter-spacing: -2%;
+    --sdga-typography-d-lg-semibold-font-size: 3rem;
+    --sdga-typography-d-lg-semibold-line-height: 3.75rem;
+    --sdga-typography-d-lg-semibold-letter-spacing: -2%;
+    --sdga-typography-d-lg-bold-font-size: 3rem;
+    --sdga-typography-d-lg-bold-line-height: 3.75rem;
+    --sdga-typography-d-lg-bold-letter-spacing: -2%;
+    --sdga-typography-d-md-regular-font-size: 2.25rem;
+    --sdga-typography-d-md-regular-line-height: 2.75rem;
+    --sdga-typography-d-md-regular-letter-spacing: -2%;
+    --sdga-typography-d-md-medium-font-size: 2.25rem;
+    --sdga-typography-d-md-medium-line-height: 2.75rem;
+    --sdga-typography-d-md-medium-letter-spacing: -2%;
+    --sdga-typography-d-md-semibold-font-size: 2.25rem;
+    --sdga-typography-d-md-semibold-line-height: 2.75rem;
+    --sdga-typography-d-md-semibold-letter-spacing: -2%;
+    --sdga-typography-d-md-bold-font-size: 2.25rem;
+    --sdga-typography-d-md-bold-line-height: 2.75rem;
+    --sdga-typography-d-md-bold-letter-spacing: -2%;
+    --sdga-typography-d-sm-regular-font-size: 1.875rem;
+    --sdga-typography-d-sm-regular-line-height: 2.375rem;
+    --sdga-typography-d-sm-regular-letter-spacing: -2%;
+    --sdga-typography-d-sm-medium-font-size: 1.875rem;
+    --sdga-typography-d-sm-medium-line-height: 2.375rem;
+    --sdga-typography-d-sm-medium-letter-spacing: -2%;
+    --sdga-typography-d-sm-semibold-font-size: 1.875rem;
+    --sdga-typography-d-sm-semibold-line-height: 2.375rem;
+    --sdga-typography-d-sm-semibold-letter-spacing: -2%;
+    --sdga-typography-d-sm-bold-font-size: 1.875rem;
+    --sdga-typography-d-sm-bold-line-height: 2.375rem;
+    --sdga-typography-d-sm-bold-letter-spacing: -2%;
+    --sdga-typography-d-xs-regular-font-size: 1.5rem;
+    --sdga-typography-d-xs-regular-line-height: 2rem;
+    --sdga-typography-d-xs-regular-letter-spacing: -2%;
+    --sdga-typography-d-xs-medium-font-size: 1.5rem;
+    --sdga-typography-d-xs-medium-line-height: 2rem;
+    --sdga-typography-d-xs-medium-letter-spacing: -2%;
+    --sdga-typography-d-xs-semibold-font-size: 1.5rem;
+    --sdga-typography-d-xs-semibold-line-height: 2rem;
+    --sdga-typography-d-xs-semibold-letter-spacing: -2%;
+    --sdga-typography-d-xs-bold-font-size: 1.5rem;
+    --sdga-typography-d-xs-bold-line-height: 2rem;
+    --sdga-typography-d-xs-bold-letter-spacing: -2%;
+    --sdga-typography-text-2xl-regular-font-size: 1.25rem;
+    --sdga-typography-text-2xl-regular-line-height: 1.875rem;
+    --sdga-typography-text-2xl-medium-font-size: 1.25rem;
+    --sdga-typography-text-2xl-medium-line-height: 1.875rem;
+    --sdga-typography-text-2xl-semibold-font-size: 1.25rem;
+    --sdga-typography-text-2xl-semibold-line-height: 1.875rem;
+    --sdga-typography-text-2xl-bold-font-size: 1.25rem;
+    --sdga-typography-text-2xl-bold-line-height: 1.875rem;
+    --sdga-typography-text-xl-regular-font-size: 1.125rem;
+    --sdga-typography-text-xl-regular-line-height: 1.75rem;
+    --sdga-typography-text-xl-medium-font-size: 1.125rem;
+    --sdga-typography-text-xl-medium-line-height: 1.75rem;
+    --sdga-typography-text-xl-semibold-font-size: 1.125rem;
+    --sdga-typography-text-xl-semibold-line-height: 1.75rem;
+    --sdga-typography-text-xl-bold-font-size: 1.125rem;
+    --sdga-typography-text-xl-bold-line-height: 1.75rem;
+    --sdga-typography-text-lg-regular-font-size: 1rem;
+    --sdga-typography-text-lg-regular-line-height: 1.5rem;
+    --sdga-typography-text-lg-medium-font-size: 1rem;
+    --sdga-typography-text-lg-medium-line-height: 1.5rem;
+    --sdga-typography-text-lg-semibold-font-size: 1rem;
+    --sdga-typography-text-lg-semibold-line-height: 1.5rem;
+    --sdga-typography-text-lg-bold-font-size: 1rem;
+    --sdga-typography-text-lg-bold-line-height: 1.5rem;
+    --sdga-typography-text-md-regular-font-size: .875rem;
+    --sdga-typography-text-md-regular-line-height: 1.25rem;
+    --sdga-typography-text-md-medium-font-size: .875rem;
+    --sdga-typography-text-md-medium-line-height: 1.25rem;
+    --sdga-typography-text-md-semibold-font-size: .875rem;
+    --sdga-typography-text-md-semibold-line-height: 1.25rem;
+    --sdga-typography-text-md-bold-font-size: .875rem;
+    --sdga-typography-text-md-bold-line-height: 1.25rem;
+    --sdga-typography-text-sm-regular-font-size: .75rem;
+    --sdga-typography-text-sm-regular-line-height: 1.125rem;
+    --sdga-typography-text-sm-medium-font-size: .75rem;
+    --sdga-typography-text-sm-medium-line-height: 1.125rem;
+    --sdga-typography-text-sm-semibold-font-size: .75rem;
+    --sdga-typography-text-sm-semibold-line-height: 1.125rem;
+    --sdga-typography-text-sm-bold-font-size: .75rem;
+    --sdga-typography-text-sm-bold-line-height: 1.125rem;
+    --sdga-typography-text-xs-regular-font-size: .75rem;
+    --sdga-typography-text-xs-regular-line-height: 1.125rem;
+    --sdga-typography-text-xs-medium-font-size: .75rem;
+    --sdga-typography-text-xs-medium-line-height: 1.125rem;
+    --sdga-typography-text-xs-semibold-font-size: .75rem;
+    --sdga-typography-text-xs-semibold-line-height: 1.125rem;
+    --sdga-typography-text-xs-bold-font-size: .75rem;
+    --sdga-typography-text-xs-bold-line-height: 1.125rem;
+    --sdga-grid-desktop-columns: 12;
+    --sdga-grid-desktop-gap: 24px;
+    --sdga-grid-desktop-padding: 48px;
+    --sdga-grid-tablet-columns: 8;
+    --sdga-grid-tablet-gap: 20px;
+    --sdga-grid-tablet-padding: 32px;
+    --sdga-grid-mobile-columns: 4;
+    --sdga-grid-mobile-gap: 16px;
+    --sdga-grid-mobile-padding: 16px;
+    --sdga-breakpoint-mobile: 320px;
+    --sdga-breakpoint-tablet: 768px;
+    --sdga-breakpoint-desktop: 1024px;
+    --sdga-container-max-width-sm: 540px;
+    --sdga-container-max-width-md: 720px;
+    --sdga-container-max-width-lg: 960px;
+    --sdga-container-max-width-xl: 1140px;
+    --sdga-container-max-width-xxl: 1320px;
+    --sdga-shadow-shadow-xs: 0 1px 3px 0 rgba(16, 24, 40, .05);
+    --sdga-shadow-shadow-sm: 0 1px 2px 0 rgba(16, 24, 40, .06), 0 1px 3px 0 rgba(16, 24, 40, .1);
+    --sdga-shadow-shadow-md: 0 4px 8px -2px rgba(16, 24, 40, .1), 0 2px 4px -2px rgba(16, 24, 40, .06);
+    --sdga-shadow-shadow-lg: 0 12px 16px -6px rgba(16, 24, 40, .08), 0 4px 6px -2px rgba(16, 24, 40, .03);
+    --sdga-shadow-shadow-xl: 0 20px 24px -4px rgba(16, 24, 40, .08), 0 8px 8px -4px rgba(16, 24, 40, .03);
+    --sdga-shadow-shadow-2xl: 0 24px 48px -12px rgba(16, 24, 40, .18);
+    --sdga-shadow-shadow-3xl: 0 32px 64px -12px rgba(16, 24, 40, .14);
+    --sdga-backdrop-backdrop-blur-sm: 8px;
+    --sdga-backdrop-backdrop-blur-md: 16px;
+    --sdga-backdrop-backdrop-blur-lg: 24px;
+    --sdga-backdrop-backdrop-blur-xl: 40px;
+    --sdga-spacing-0: 0rem;
+    --sdga-spacing--5: .125rem;
+    --sdga-spacing-1: .25rem;
+    --sdga-spacing-2: .5rem;
+    --sdga-spacing-3: .75rem;
+    --sdga-spacing-4: 1rem;
+    --sdga-spacing-5: 1.25rem;
+    --sdga-spacing-6: 1.5rem;
+    --sdga-spacing-8: 2rem;
+    --sdga-spacing-10: 2.5rem;
+    --sdga-spacing-12: 3rem;
+    --sdga-spacing-16: 4rem;
+    --sdga-spacing-20: 5rem;
+    --sdga-spacing-24: 6rem;
+    --sdga-spacing-32: 8rem;
+    --sdga-spacing-40: 10rem;
+    --sdga-spacing-48: 12rem;
+    --sdga-spacing-56: 14rem;
+    --sdga-spacing-64: 16rem;
+    --sdga-spacing-80: 20rem;
+    --sdga-spacing-96: 24rem;
+    --sdga-spacing-120: 30rem;
+    --sdga-spacing-140: 35rem;
+    --sdga-spacing-160: 40rem;
+    --sdga-spacing-180: 45rem;
+    --sdga-spacing-192: 48rem;
+    --sdga-spacing-256: 64rem;
+    --sdga-spacing-320: 80rem;
+    --sdga-spacing-360: 90rem;
+    --sdga-spacing-400: 100rem;
+    --sdga-spacing-480: 120rem;
+    --sdga-spacing-none: 0rem;
+    --sdga-spacing-xxs: .125rem;
+    --sdga-spacing-xs: .25rem;
+    --sdga-spacing-sm: .375rem;
+    --sdga-spacing-md: .5rem;
+    --sdga-spacing-lg: .75rem;
+    --sdga-spacing-xl: 1rem;
+    --sdga-spacing-2xl: 1.25rem;
+    --sdga-spacing-3xl: 1.5rem;
+    --sdga-spacing-4xl: 2rem;
+    --sdga-spacing-5xl: 2.5rem;
+    --sdga-spacing-6xl: 3rem;
+    --sdga-spacing-7xl: 4rem;
+    --sdga-spacing-8xl: 5rem;
+    --sdga-spacing-9xl: 6rem;
+    --sdga-spacing-10xl: 8rem;
+    --sdga-spacing-11xl: 10rem;
+    --sdga-content-width-xxs: 20rem;
+    --sdga-content-width-xs: 24rem;
+    --sdga-content-width-sm: 30rem;
+    --sdga-content-width-md: 35rem;
+    --sdga-content-width-lg: 40rem;
+    --sdga-content-width-xl: 48rem;
+    --sdga-content-width-2xl: 64rem;
+    --sdga-content-width-3xl: 80rem;
+    --sdga-content-width-4xl: 90rem;
+    --sdga-content-width-5xl: 100rem;
+    --sdga-content-width-6xl: 120rem;
+    --sdga-radius-none: 0rem;
+    --sdga-radius-xs: .125rem;
+    --sdga-radius-sm: .25rem;
+    --sdga-radius-md: .5rem;
+    --sdga-radius-lg: 1rem;
+    --sdga-radius-xl: 1.5rem;
+    --sdga-radius-full: 9999px;
+}
+*{
+    font-family: "IBM Plex Sans Arabic", sans-serif;
+
+}
+.table {
+    margin: 20px;
+    background-color: var(--sdga-alpha-100);
+    width: calc(100vw - 40px);
+    border-collapse: collapse;
+    overflow-x: auto;
+    overflow-y: auto;
+    display: block;
+    max-height: calc(100vh - 40px);
+    border-top: 1px solid var(--sdga-gray-300);
+}
+
+.table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+.table td {
+    padding: var(--sdga-spacing-5) var(--sdga-spacing-3);
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.table thead  {
+    font-size: var(--sdga-typography-text-sm-medium-font-size);
+    line-height: var(--sdga-typography-text-sm-medium-line-height);
+    font-weight: var(--sdga-font-weight-medium);
+    background-color: var(--sdga-gray-100);
+    color: var(--sdga-gray-700);
+    border-bottom: 1px solid var(--sdga-gray-300) !important;
+    text-align: center;
+    & th {
+        padding: var(--sdga-spacing-5) var(--sdga-spacing-3);
+        justify-content: center;
+            align-items: center;
+    }
+
+}
+
+
+.table tbody td {
+    font-size: var(--sdga-typography-text-lg-regular-font-size);
+    line-height: var(--sdga-typography-text-lg-regular-line-height);
+    font-weight: var(--sdga-font-weight-regular);
+    border-bottom: 1px solid var(--sdga-gray-300);
+}
+
+.table tbody td:nth-child(1) {
+    border-right: 1px solid var(--sdga-gray-300);
+}
+
+.table tbody tr {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+}
+
+.table.alternating-rows tbody tr:nth-child(even) td {
+    background-color: var(--sdga-gray-50);
+}
+
+.table.alternating-rows.contained tbody tr:last-child td:first-child {
+    border-bottom-left-radius: var(--sdga-radius-md);
+}
+
+.table.alternating-rows.contained tbody tr:last-child td:first-child[dir="rtl"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: var(--sdga-radius-md);
+}
+
+.table.alternating-rows.contained tbody tr:last-child td:last-child {
+    border-bottom-right-radius: var(--sdga-radius-md);
+}
+
+.table.alternating-rows.contained tbody tr:last-child td:last-child[dir="rtl"] {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: var(--sdga-radius-md);
+}
+
+.table[dir="rtl"] td {
+    text-align: right;
+}
+
+.table[dir="rtl"] tbody td {
+    font-size: var(--sdga-typography-text-lg-regular-font-size);
+    line-height: var(--sdga-typography-text-lg-regular-line-height);
+    font-weight: var(--sdga-font-weight-regular);
+    border-bottom: 1px solid var(--sdga-gray-300);
+}
+
+.table[dir="rtl"] tbody td:nth-child(1) {
+    border-right: none;
+    border-left: 1px solid var(--sdga-gray-300);
+}
+
+.table[dir="rtl"] thead td:not(:last-child) {
+    border-right: none;
+    border-left: 1px solid var(--sdga-gray-300);
+}
+
+.table[dir="rtl"] {
+    direction: rtl;
+}
+
+.table.compact td {
+    padding: var(--sdga-spacing-3);
+}
+
+.table.contained {
+    border-radius: var(--sdga-radius-md);
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--sdga-gray-300);
+    overflow-x: auto;
+}
+
+.table.contained thead tr:first-child td:first-child {
+    border-top-left-radius: 8px;
+}
+
+.table.contained thead tr:first-child td:first-child[dir="rtl"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 8px;
+}
+
+.table.contained thead tr:first-child td:last-child {
+    border-top-right-radius: 8px;
+}
+
+.table.contained thead tr:first-child td:last-child[dir="rtl"] {
+    border-top-right-radius: 0;
+    border-top-left-radius: 8px;
+}
+
+.table.contained tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table.center-content td {
+    text-align: center;
+}
+
+.table.center-content td * {
+    margin: auto;
+}
+
+.table::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.table::-webkit-scrollbar-track {
+    background: var(--sdga-gray-100);
+    border-radius: var(--sdga-radius-sm);
+}
+
+.table::-webkit-scrollbar-thumb {
+    background: var(--sdga-gray-400);
+    border-radius: var(--sdga-radius-sm);
+}
+
+.table::-webkit-scrollbar-thumb:hover {
+    background: var(--sdga-gray-600);
+}
+
+.table td.border-s {
+    border-left: 1px solid var(--sdga-gray-300);
+}
+
+.table td.border-s[dir="rtl"] {
+    border-left: none;
+    border-right: 1px solid var(--sdga-gray-300);
+}
+
+.table td.border-e {
+    border-right: 1px solid var(--sdga-gray-300);
+}
+
+.table td.border-e[dir="rtl"] {
+    border-right: none;
+    border-left: 1px solid var(--sdga-gray-300);
+}
+
+.table td.border-b {
+    border-bottom: 1px solid var(--sdga-gray-300);
+}
+
+.table td.border-t {
+    border-top: 1px solid var(--sdga-gray-300);
+}
+
+.table td.border-less-x {
+    border-right: none !important;
+    border-left: none !important;
+}
+
+.table td.border-less-y {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+@media screen and (max-width: 320px) {
+    .table {
+        table-layout: auto;
+        width: 100%;
+        display: block;
+    }
+}
+
+td span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.rating-stars {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.star-filled {
+  color: var(--sdga-gold-500);
+  font-size: 22px;
+}
+
+.star-empty {
+  color: var(--sdga-gray-300);
+  font-size: 22px;
+}
