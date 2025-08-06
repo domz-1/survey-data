@@ -37,7 +37,7 @@ function ResponseGrid() {
   });
 
   const trs = [];
-  const data = Data;
+  const data = Data.slice(0, 10); // Only take first 10 items
   let id = 1;
 
   data.forEach((item) => {
