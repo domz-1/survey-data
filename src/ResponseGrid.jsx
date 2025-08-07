@@ -3,12 +3,10 @@ import './index.css';
 import React, { useState, useMemo } from 'react';
 import Pagination from './Pagination';
 import Select from 'react-select';
-
 function ResponseGrid() {
     // State for pagination
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
-
     // State for filtering and sorting
     const [searchTerm, setSearchTerm] = useState('');
     const [filters, setFilters] = useState({});
@@ -17,7 +15,8 @@ function ResponseGrid() {
         direction: 'asc',
     });
     const [columnVisibility, setColumnVisibility] = useState({});
-
+    // New state for filter visibility
+    const [showFilters, setShowFilters] = useState(false);
     const names = [
         'gender',
         'region',
@@ -53,7 +52,6 @@ function ResponseGrid() {
         'HappendAt',
         'InstanceId',
     ];
-
     // Initialize column visibility
     if (Object.keys(columnVisibility).length === 0) {
         const initialVisibility = {};
@@ -62,18 +60,15 @@ function ResponseGrid() {
         });
         setColumnVisibility(initialVisibility);
     }
-
     // Process and filter data
     const processedData = useMemo(() => {
         let result = [...Data];
-
         // Apply search
         if (searchTerm) {
             result = result.filter((item) => {
                 return names.some((name) => {
                     const value = item[name];
                     if (value === undefined || value === null) return false;
-
                     if (Array.isArray(value)) {
                         return value.some((v) =>
                             v
@@ -89,7 +84,6 @@ function ResponseGrid() {
                 });
             });
         }
-
         // Apply filters
         Object.entries(filters).forEach(([key, value]) => {
             if (value) {
@@ -97,7 +91,6 @@ function ResponseGrid() {
                     const itemValue = item[key];
                     if (itemValue === undefined || itemValue === null)
                         return false;
-
                     if (Array.isArray(itemValue)) {
                         return itemValue.some(
                             (v) =>
@@ -112,40 +105,33 @@ function ResponseGrid() {
                 });
             }
         });
-
         // Apply sorting
         if (sortConfig.key) {
             result.sort((a, b) => {
                 const aValue = a[sortConfig.key];
                 const bValue = b[sortConfig.key];
-
                 if (aValue === undefined || aValue === null)
                     return sortConfig.direction === 'asc' ? 1 : -1;
                 if (bValue === undefined || bValue === null)
                     return sortConfig.direction === 'asc' ? -1 : 1;
-
                 if (typeof aValue === 'number' && typeof bValue === 'number') {
                     return sortConfig.direction === 'asc'
                         ? aValue - bValue
                         : bValue - aValue;
                 }
-
                 const aString = Array.isArray(aValue)
                     ? aValue.join(', ')
                     : aValue.toString();
                 const bString = Array.isArray(bValue)
                     ? bValue.join(', ')
                     : bValue.toString();
-
                 return sortConfig.direction === 'asc'
                     ? aString.localeCompare(bString)
                     : bString.localeCompare(aString);
             });
         }
-
         return result;
     }, [Data, searchTerm, filters, sortConfig]);
-
     // Handle sorting
     const requestSort = (key) => {
         let direction = 'asc';
@@ -155,7 +141,6 @@ function ResponseGrid() {
         setSortConfig({ key, direction });
         setCurrentPage(1); // Reset to first page when sorting
     };
-
     // Handle filter change
     const handleFilterChange = (key, value) => {
         setFilters((prev) => {
@@ -169,7 +154,6 @@ function ResponseGrid() {
         });
         setCurrentPage(1); // Reset to first page when filtering
     };
-
     // Toggle column visibility
     const toggleColumnVisibility = (key) => {
         setColumnVisibility((prev) => ({
@@ -177,7 +161,6 @@ function ResponseGrid() {
             [key]: !prev[key],
         }));
     };
-
     // Get unique filter values for a column
     const getUniqueValues = (key) => {
         const values = new Set();
@@ -193,13 +176,11 @@ function ResponseGrid() {
         });
         return Array.from(values).sort();
     };
-
     // Calculate pagination indexes
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentData = processedData.slice(indexOfFirstItem, indexOfLastItem);
-
-    // Generate table header with sorting and filtering
+    // Generate table header with sorting and conditional filtering
     const header = [
         <th key="id">
             <span>Id</span>
@@ -207,20 +188,17 @@ function ResponseGrid() {
     ];
     names.forEach((name) => {
         if (!columnVisibility[name]) return;
-
         const isSorted = sortConfig.key === name;
         const sortIcon = isSorted
             ? sortConfig.direction === 'asc'
                 ? '↑'
                 : '↓'
             : '↕';
-
         const uniqueValues = getUniqueValues(name);
         const selectOptions = uniqueValues.map((value) => ({
             value,
             label: value,
         }));
-
         header.push(
             <th key={name}>
                 <div className="column-header">
@@ -265,65 +243,65 @@ function ResponseGrid() {
                             )}
                         </span>
                     </span>
-
-                    <div className="filter-controls">
-                        <Select
-                            className="filter-select"
-                            classNamePrefix="select"
-                            isClearable
-                            isSearchable
-                            options={selectOptions}
-                            value={
-                                filters[name]
-                                    ? {
-                                          value: filters[name],
-                                          label: filters[name],
-                                      }
-                                    : null
-                            }
-                            onChange={(selectedOption) =>
-                                handleFilterChange(
-                                    name,
-                                    selectedOption?.value || ''
-                                )
-                            }
-                            onClick={(e) => e.stopPropagation()}
-                            placeholder="Filter..."
-                            menuPortalTarget={document.body}
-                            styles={{
-                                menuPortal: (base) => ({
-                                    ...base,
-                                    zIndex: 9999,
-                                }),
-                                control: (provided) => ({
-                                    ...provided,
-                                    minHeight: '30px',
-                                    height: '30px',
-                                }),
-                                dropdownIndicator: (provided) => ({
-                                    ...provided,
-                                    padding: '4px',
-                                }),
-                                clearIndicator: (provided) => ({
-                                    ...provided,
-                                    padding: '4px',
-                                }),
-                                valueContainer: (provided) => ({
-                                    ...provided,
-                                    padding: '0 6px',
-                                }),
-                                input: (provided) => ({
-                                    ...provided,
-                                    margin: '0',
-                                }),
-                            }}
-                        />
-                    </div>
+                    {showFilters && (
+                        <div className="filter-controls">
+                            <Select
+                                className="filter-select"
+                                classNamePrefix="select"
+                                isClearable
+                                isSearchable
+                                options={selectOptions}
+                                value={
+                                    filters[name]
+                                        ? {
+                                              value: filters[name],
+                                              label: filters[name],
+                                          }
+                                        : null
+                                }
+                                onChange={(selectedOption) =>
+                                    handleFilterChange(
+                                        name,
+                                        selectedOption?.value || ''
+                                    )
+                                }
+                                onClick={(e) => e.stopPropagation()}
+                                placeholder="Filter..."
+                                menuPortalTarget={document.body}
+                                styles={{
+                                    menuPortal: (base) => ({
+                                        ...base,
+                                        zIndex: 9999,
+                                    }),
+                                    control: (provided) => ({
+                                        ...provided,
+                                        minHeight: '30px',
+                                        height: '30px',
+                                    }),
+                                    dropdownIndicator: (provided) => ({
+                                        ...provided,
+                                        padding: '4px',
+                                    }),
+                                    clearIndicator: (provided) => ({
+                                        ...provided,
+                                        padding: '4px',
+                                    }),
+                                    valueContainer: (provided) => ({
+                                        ...provided,
+                                        padding: '0 6px',
+                                    }),
+                                    input: (provided) => ({
+                                        ...provided,
+                                        margin: '0',
+                                    }),
+                                }}
+                            />
+                        </div>
+                    )}
                 </div>
             </th>
         );
     });
-
     // Generate table rows
     const rows = currentData.map((item, rowIndex) => {
         const cells = [
@@ -331,10 +309,8 @@ function ResponseGrid() {
                 <span>{indexOfFirstItem + rowIndex + 1}</span>
             </td>,
         ];
-
         names.forEach((name) => {
             if (!columnVisibility[name]) return;
-
             if (!item[name]) {
                 cells.push(
                     <td key={name}>
@@ -403,10 +379,10 @@ function ResponseGrid() {
         });
         return <tr key={rowIndex}>{cells}</tr>;
     });
-
     return (
         <div className="response-grid-container">
             <div className="controls">
+                {/* New Toggle Filters Button */}
                 <div className="search-box">
                     <input
                         type="text"
@@ -420,12 +396,17 @@ function ResponseGrid() {
                     <button
                         onClick={() => setSearchTerm('')}
                         disabled={!searchTerm}
-                        className='clear-btn'
+                        className="clear-btn"
                     >
                         Clear
                     </button>
+                    <button
+                        onClick={() => setShowFilters(!showFilters)}
+                        className="toggle-filters-btn"
+                    >
+                        {showFilters ? 'Hide Filter' : 'Show Filter'}
+                    </button>
                 </div>
-
                 <div className="active-filters">
                     {Object.entries(filters).map(([key, value]) => (
                         <span key={key} className="filter-tag">
@@ -436,34 +417,39 @@ function ResponseGrid() {
                         </span>
                     ))}
                 </div>
+                <div className='stats-and-download'>
+                    <span className="stats">
+                        Showing {indexOfFirstItem + 1}-
+                        {Math.min(indexOfLastItem, processedData.length)} of{' '}
+                        {processedData.length} records
+                        {processedData.length !== Data.length && (
+                            <span className="filtered-count">
+                                {' '}
+                                (filtered from {Data.length})
+                            </span>
+                        )}
+                    </span>
+                    <span>
 
-                <div className="stats">
-                    Showing {indexOfFirstItem + 1}-
-                    {Math.min(indexOfLastItem, processedData.length)} of{' '}
-                    {processedData.length} records
-                    {processedData.length !== Data.length && (
-                        <span className="filtered-count">
-                            {' '}
-                            (filtered from {Data.length})
-                        </span>
-                    )}
+                    <a href="./final_files/survey_data.csv" download className='download'>Download CSV</a>
+                    <a href="./final_files/survey_data.xlsx" download className='download'>Download Excel</a>
+                    </span>
+                    
+
                 </div>
             </div>
-
             <table className="table contained alternating-rows">
                 <thead>
                     <tr>{header}</tr>
                 </thead>
                 <tbody>{rows}</tbody>
             </table>
-
             <Pagination
                 totalItems={processedData.length}
                 itemsPerPage={itemsPerPage}
                 currentPage={currentPage}
                 onPageChange={setCurrentPage}
             />
-
             <details className="column-visibility-controls accordion sm">
                 <summary>Toggle Columns:</summary>
                 <div className="accordion-content">
@@ -482,5 +468,4 @@ function ResponseGrid() {
         </div>
     );
 }
-
 export default ResponseGrid;
