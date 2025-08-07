@@ -347,7 +347,7 @@
 
 }
 .table {
-    margin: 20px;
+    margin-block: 0px;
     background-color: var(--sdga-alpha-100);
     width: calc(100vw - 80px);
     border-collapse: collapse;
@@ -694,18 +694,21 @@ td span{
 
         }
     
-        /* Search and filter controls */
-        .controls {
-            margin-bottom: 15px;
-        }
+        
     
         .search-box {
-            margin-bottom: 10px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
         }
-    
+                .search-box *{
+                    margin-bottom: 0;
+                }
         .search-box input {
             padding: 8px;
-            width: 300px;
+            width: 100%;
             margin-right: 5px;
         }
     
@@ -726,7 +729,6 @@ td span{
         }
     
         .filter-tag button {
-            margin-left: 5px;
             background: none;
             border: none;
             cursor: pointer;
@@ -752,7 +754,6 @@ td span{
         .column-visibility-controls label {
             display: inline-block;
             margin-right: 15px;
-            margin-bottom: 8px;
             cursor: pointer;
         }
     
