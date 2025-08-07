@@ -1,0 +1,132 @@
+import React from 'react';
+import Select from 'react-select';
+
+const TableHeader = ({
+    name,
+    sortConfig,
+    requestSort,
+    columnVisibility,
+    toggleColumnVisibility,
+    filters,
+    handleFilterChange,
+    showFilters,
+    getUniqueValues
+}) => {
+    const isSorted = sortConfig.key === name;
+    const sortIcon = isSorted
+        ? sortConfig.direction === 'asc' ? '↑' : '↓'
+        : '↕';
+
+    const uniqueValues = getUniqueValues(name);
+    const selectOptions = uniqueValues.map(value => ({ value, label: value }));
+
+    return (
+        <th key={name}>
+            <div className="column-header">
+                <span
+                    onClick={() => requestSort(name)}
+                    className="sortable-header"
+                    title={`Sort by ${name}`}
+                >
+                    <span>
+                        {name}{' '}
+                        <VisibilityToggle
+                            name={name}
+                            columnVisibility={columnVisibility}
+                            toggleColumnVisibility={toggleColumnVisibility}
+                        />
+                        {isSorted && <span className="sort-icon">{sortIcon}</span>}
+                    </span>
+                </span>
+                {showFilters && (
+                    <FilterSelect
+                        name={name}
+                        filters={filters}
+                        handleFilterChange={handleFilterChange}
+                        selectOptions={selectOptions}
+                    />
+                )}
+            </div>
+        </th>
+    );
+};
+
+const VisibilityToggle = ({ name, columnVisibility, toggleColumnVisibility }) => (
+    <button
+        onClick={(e) => {
+            e.stopPropagation();
+            toggleColumnVisibility(name);
+        }}
+        className="visibility-toggle"
+        title={columnVisibility[name] ? 'Hide column' : 'Show column'}
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            color="darkgreen"
+            fill="none"
+        >
+            <path
+                d="M21.544 11.045C21.848 11.4713 22 11.6845 22 12C22 12.3155 21.848 12.5287 21.544 12.955C20.1779 14.8706 16.6892 19 12 19C7.31078 19 3.8221 14.8706 2.45604 12.955C2.15201 12.5287 2 12.3155 2 12C2 11.6845 2.15201 11.4713 2.45604 11.045C3.8221 9.12944 7.31078 5 12 5C16.6892 5 20.1779 9.12944 21.544 11.045Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+            />
+            <path
+                d="M15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+            />
+        </svg>
+    </button>
+);
+
+const FilterSelect = ({ name, filters, handleFilterChange, selectOptions }) => (
+    <div className="filter-controls">
+        <Select
+            className="filter-select"
+            classNamePrefix="select"
+            isClearable
+            isSearchable
+            options={selectOptions}
+            value={
+                filters[name]
+                    ? { value: filters[name], label: filters[name] }
+                    : null
+            }
+            onChange={(selectedOption) =>
+                handleFilterChange(name, selectedOption?.value || '')
+            }
+            onClick={(e) => e.stopPropagation()}
+            placeholder="Filter..."
+            menuPortalTarget={document.body}
+            styles={{
+                menuPortal: (base) => ({ ...base, zIndex: 9999 }),
+                control: (provided) => ({
+                    ...provided,
+                    minHeight: '30px',
+                    height: '30px',
+                }),
+                dropdownIndicator: (provided) => ({
+                    ...provided,
+                    padding: '4px',
+                }),
+                clearIndicator: (provided) => ({
+                    ...provided,
+                    padding: '4px',
+                }),
+                valueContainer: (provided) => ({
+                    ...provided,
+                    padding: '0 6px',
+                }),
+                input: (provided) => ({
+                    ...provided,
+                    margin: '0',
+                }),
+            }}
+        />
+    </div>
+);
+
+export default TableHeader;
