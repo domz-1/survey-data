@@ -1,14 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import ExcelJS from 'exceljs';
-import {Data} from './json_data.js';
+import {  Data  } from '../db/json_data';
 import { fileURLToPath } from 'url';
 // Get current file path and directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Create output directory if it doesn't exist
-const outputDir = path.join(__dirname, 'final_files');
+const outputDir = path.join('.', 'final_files');
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir);
 }
