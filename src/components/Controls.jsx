@@ -95,14 +95,14 @@ const StatsAndDownload = ({
         <span>
             <a
                 href="../../public/survey_data.csv"
-                download
+                download="survey_data.csv"
                 className="download"
             >
                 Download CSV
             </a>
             <a
                 href="../../public/survey_data.xlsx"
-                download
+                download="survey_data.xlsx"
                 className="download"
             >
                 Download Excel
