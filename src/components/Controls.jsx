@@ -74,8 +74,13 @@ const ActiveFilters = ({ filters, handleFilterChange }) => (
     </div>
 );
 
-const StatsAndDownload = ({ indexOfFirstItem, indexOfLastItem, processedData, Data }) => (
-    <div className='stats-and-download'>
+const StatsAndDownload = ({
+    indexOfFirstItem,
+    indexOfLastItem,
+    processedData,
+    Data,
+}) => (
+    <div className="stats-and-download">
         <span className="stats">
             Showing {indexOfFirstItem + 1}-
             {Math.min(indexOfLastItem, processedData.length)} of{' '}
@@ -88,8 +93,20 @@ const StatsAndDownload = ({ indexOfFirstItem, indexOfLastItem, processedData, Da
             )}
         </span>
         <span>
-            <a href="./final_files/survey_data.csv" download className='download'>Download CSV</a>
-            <a href="./final_files/survey_data.xlsx" download className='download'>Download Excel</a>
+            <a
+                href="../../public/survey_data.csv"
+                download
+                className="download"
+            >
+                Download CSV
+            </a>
+            <a
+                href="../../public/survey_data.xlsx"
+                download
+                className="download"
+            >
+                Download Excel
+            </a>
         </span>
     </div>
 );
