@@ -94,14 +94,14 @@ const StatsAndDownload = ({
         </span>
         <span>
             <a
-                href="../../public/survey_data.csv"
+                href="https://surveydata01.netlify.app/survey_data.csv"
                 download="survey_data.csv"
                 className="download"
             >
                 Download CSV
             </a>
             <a
-                href="../../public/survey_data.xlsx"
+                href="https://surveydata01.netlify.app/survey_data.xlsx"
                 download="survey_data.xlsx"
                 className="download"
             >
